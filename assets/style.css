@@ -82,11 +82,18 @@ main {
 }
 
 .time {
-  font-size: clamp(72px, 22vw, 160px);
+  font-size: clamp(64px, 20vw, 144px);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1;
   font-variant-numeric: tabular-nums;
+}
+.time .sec {
+  font-size: 0.55em;
+  color: var(--muted);
+  font-weight: 500;
+  margin-left: 0.05em;
+  vertical-align: baseline;
 }
 
 .suffix {
@@ -127,9 +134,11 @@ main {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 24px;
+  padding: 28px 24px;
   margin-top: 24px;
 }
+
+.converter { text-align: center; }
 
 .converter h2, .explainer h2 {
   margin: 0 0 4px;
@@ -137,13 +146,13 @@ main {
   font-weight: 600;
 }
 .hint {
-  margin: 0 0 18px;
+  margin: 0 0 22px;
   color: var(--muted);
   font-size: 14px;
 }
 
-.row { display: flex; flex-direction: column; gap: 8px; }
-.row + .arrow { text-align: center; color: var(--muted); margin: 10px 0; font-size: 18px; }
+.row { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.row + .arrow { text-align: center; color: var(--muted); margin: 14px 0; font-size: 18px; }
 .row label {
   font-size: 13px;
   color: var(--muted);
@@ -151,8 +160,9 @@ main {
   letter-spacing: 0.06em;
 }
 .inputs {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
 }

@@ -23,12 +23,13 @@
     const d = new Date();
     const h = d.getHours();
     const m = d.getMinutes();
+    const s = d.getSeconds();
     if (format === "24") {
-      timeEl.textContent = `${pad(h)}:${pad(m)}`;
+      timeEl.innerHTML = `${pad(h)}:${pad(m)}<span class="sec">:${pad(s)}</span>`;
       suffixEl.textContent = "";
     } else {
       const h12 = ((h + 11) % 12) + 1;
-      timeEl.textContent = `${pad(h12)}:${pad(m)}`;
+      timeEl.innerHTML = `${pad(h12)}:${pad(m)}<span class="sec">:${pad(s)}</span>`;
       suffixEl.textContent = h < 12 ? "AM" : "PM";
     }
   }
