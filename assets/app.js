@@ -5,6 +5,10 @@
   // ---------- Clock ----------
   const timeEl = $("time");
   const suffixEl = $("suffix");
+  const dateEl = $("date");
+  const locale = document.documentElement.lang || "en";
+  const dateFmt = new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", year: "numeric" });
+  let lastDateKey = "";
   const btn12 = $("btn-12");
   const btn24 = $("btn-24");
 
@@ -21,6 +25,11 @@
 
   function tick() {
     const d = new Date();
+    const dateKey = `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+    if (dateKey !== lastDateKey) {
+      dateEl.textContent = dateFmt.format(d);
+      lastDateKey = dateKey;
+    }
     const h = d.getHours();
     const m = d.getMinutes();
     const s = d.getSeconds();
