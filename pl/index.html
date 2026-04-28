@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0d10">
+<title>Która godzina? AM czy PM — zegar 12h i konwerter</title>
+<meta name="description" content="Sprawdź czy teraz jest AM czy PM. Aktualna godzina w formacie 12h z przełącznikiem 24h i dwukierunkowym konwerterem 12h ↔ 24h. Bez reklam.">
+<link rel="canonical" href="https://ampm.pages.dev/pl/">
+<link rel="alternate" hreflang="en" href="https://ampm.pages.dev/">
+<link rel="alternate" hreflang="pl" href="https://ampm.pages.dev/pl/">
+<link rel="alternate" hreflang="x-default" href="https://ampm.pages.dev/">
+<meta property="og:title" content="Która godzina? AM czy PM — zegar 12h">
+<meta property="og:description" content="Aktualna godzina AM/PM, przełącznik 24h i konwerter 12h ↔ 24h.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ampm.pages.dev/pl/">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Która godzina AM czy PM","url":"https://ampm.pages.dev/pl/","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"PLN"},"author":{"@type":"Person","name":"Tom Lebioda","email":"hello@tomlebioda.com"}}
+</script>
+</head>
+<body>
+<header class="lang">
+  <a href="/" lang="en">EN</a>
+  <span aria-hidden="true">·</span>
+  <a href="/pl/" aria-current="page" lang="pl">PL</a>
+</header>
+
+<main>
+  <section class="clock" aria-label="Aktualna godzina">
+    <h1 class="visually-hidden">Która jest teraz godzina — AM czy PM?</h1>
+    <div class="time" id="time" aria-live="polite">--:--</div>
+    <div class="suffix" id="suffix">--</div>
+    <div class="toggle" role="tablist" aria-label="Format godziny">
+      <button type="button" role="tab" aria-selected="true" data-format="12" id="btn-12">12h AM/PM</button>
+      <button type="button" role="tab" aria-selected="false" data-format="24" id="btn-24">24h</button>
+    </div>
+  </section>
+
+  <section class="converter" aria-labelledby="conv-title">
+    <h2 id="conv-title">Przelicz dowolną godzinę</h2>
+    <p class="hint">Wpisz w którekolwiek pole — drugie zaktualizuje się na żywo.</p>
+
+    <div class="row">
+      <label for="h12">12 godzin</label>
+      <div class="inputs">
+        <input id="h12" type="text" inputmode="numeric" maxlength="2" placeholder="gg" autocomplete="off">
+        <span>:</span>
+        <input id="m12" type="text" inputmode="numeric" maxlength="2" placeholder="mm" autocomplete="off">
+        <div class="ampm" role="radiogroup" aria-label="AM albo PM">
+          <label><input type="radio" name="meridiem" value="AM" checked> AM</label>
+          <label><input type="radio" name="meridiem" value="PM"> PM</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow" aria-hidden="true">↕</div>
+
+    <div class="row">
+      <label for="h24">24 godziny</label>
+      <div class="inputs">
+        <input id="h24" type="text" inputmode="numeric" maxlength="2" placeholder="GG" autocomplete="off">
+        <span>:</span>
+        <input id="m24" type="text" inputmode="numeric" maxlength="2" placeholder="MM" autocomplete="off">
+      </div>
+    </div>
+  </section>
+
+  <section class="explainer">
+    <h2>Szybka zasada</h2>
+    <ul>
+      <li><strong>AM</strong> = od północy do południa (00:00 → 11:59)</li>
+      <li><strong>PM</strong> = od południa do północy (12:00 → 23:59)</li>
+      <li><strong>12:00 AM</strong> to północ, <strong>12:00 PM</strong> to południe.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <span id="version">v1.0.0</span> · Design and code by
+  <a href="mailto:hello@tomlebioda.com">Tom Lebioda</a>
+</footer>
+
+<script src="/assets/app.js"></script>
+</body>
+</html>
