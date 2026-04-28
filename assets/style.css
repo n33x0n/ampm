@@ -89,11 +89,7 @@ main {
   font-variant-numeric: tabular-nums;
 }
 .time .sec {
-  font-size: 0.55em;
   color: var(--muted);
-  font-weight: 500;
-  margin-left: 0.05em;
-  vertical-align: baseline;
 }
 
 .suffix {
@@ -186,8 +182,8 @@ main {
 
 .ampm {
   display: inline-flex;
-  margin-left: 8px;
-  gap: 4px;
+  gap: 6px;
+  margin-top: 4px;
 }
 .ampm label {
   display: inline-flex;
