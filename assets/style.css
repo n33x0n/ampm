@@ -129,7 +129,8 @@ main {
   cursor: pointer;
   transition: background .15s, color .15s;
 }
-.toggle button[aria-selected="true"] {
+.toggle button[aria-selected="true"],
+.toggle button[aria-checked="true"] {
   background: var(--accent);
   color: var(--accent-fg);
 }
@@ -188,22 +189,7 @@ main {
 }
 .inputs span { font-size: 24px; color: var(--muted); }
 
-.ampm {
-  display: inline-flex;
-  gap: 6px;
-  margin-top: 4px;
-}
-.ampm label {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 6px 10px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-}
-.ampm input { accent-color: var(--accent); }
+.ampm { margin-top: 6px; }
 
 .explainer ul { margin: 8px 0 0; padding-left: 20px; color: var(--muted); line-height: 1.6; }
 .explainer strong { color: var(--fg); }

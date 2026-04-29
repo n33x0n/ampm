@@ -54,7 +54,7 @@
   const m12 = $("m12");
   const h24 = $("h24");
   const m24 = $("m24");
-  const meridiemInputs = document.querySelectorAll('input[name="meridiem"]');
+  const meridiemBtns = document.querySelectorAll('.ampm button[data-meridiem]');
 
   let updating = false;
 
@@ -65,12 +65,12 @@
   };
 
   function getMeridiem() {
-    const checked = document.querySelector('input[name="meridiem"]:checked');
-    return checked ? checked.value : "AM";
+    const active = document.querySelector('.ampm button[aria-checked="true"]');
+    return active ? active.dataset.meridiem : "AM";
   }
   function setMeridiem(v) {
-    document.querySelectorAll('input[name="meridiem"]').forEach((r) => {
-      r.checked = r.value === v;
+    meridiemBtns.forEach((b) => {
+      b.setAttribute("aria-checked", b.dataset.meridiem === v);
     });
   }
 
@@ -119,7 +119,12 @@
 
   [h12, m12].forEach((el) => el.addEventListener("input", from12to24));
   [h24, m24].forEach((el) => el.addEventListener("input", from24to12));
-  meridiemInputs.forEach((r) => r.addEventListener("change", from12to24));
+  meridiemBtns.forEach((b) => {
+    b.addEventListener("click", () => {
+      setMeridiem(b.dataset.meridiem);
+      from12to24();
+    });
+  });
 
   // Seed converter with current time so users see a working example
   (function seed() {

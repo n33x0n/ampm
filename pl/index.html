@@ -53,9 +53,9 @@
         <span>:</span>
         <input id="m12" type="text" inputmode="numeric" maxlength="2" placeholder="mm" autocomplete="off">
       </div>
-      <div class="ampm" role="radiogroup" aria-label="AM albo PM">
-        <label><input type="radio" name="meridiem" value="AM" checked> AM</label>
-        <label><input type="radio" name="meridiem" value="PM"> PM</label>
+      <div class="ampm toggle" role="radiogroup" aria-label="AM albo PM">
+        <button type="button" role="radio" aria-checked="true" data-meridiem="AM">AM</button>
+        <button type="button" role="radio" aria-checked="false" data-meridiem="PM">PM</button>
       </div>
     </div>
 
@@ -82,7 +82,7 @@
 </main>
 
 <footer>
-  <span id="version">v1.0.3</span> · Design and code by
+  <span id="version">v1.0.4</span> · Design and code by
   <a href="mailto:hello@tomlebioda.com">Tom Lebioda</a>
 </footer>
 
