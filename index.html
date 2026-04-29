@@ -18,7 +18,7 @@
 <meta property="og:locale:alternate" content="pl_PL">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/style.css?v=1.0.6">
+<link rel="stylesheet" href="/assets/style.css?v=1.0.7">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"AM or PM Now","url":"https://ampm.pages.dev/","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Tom Lebioda","email":"hello@tomlebioda.com"}}
 </script>
@@ -40,20 +40,21 @@
       <button type="button" role="tab" aria-selected="true" data-format="12" id="btn-12">12h AM/PM</button>
       <button type="button" role="tab" aria-selected="false" data-format="24" id="btn-24">24h</button>
     </div>
+    <a class="cta-down" href="#world-title">World clocks &amp; time converter ↓</a>
   </section>
 
   <section class="world" aria-labelledby="world-title">
     <h2 id="world-title">World clock</h2>
     <p class="hint">Toggle a city to show its current time.</p>
     <ul class="cities" id="cities">
-      <li data-tz="America/Los_Angeles" data-label="Los Angeles"></li>
-      <li data-tz="America/New_York" data-label="New York"></li>
-      <li data-tz="Europe/London" data-label="London"></li>
-      <li data-tz="Europe/Warsaw" data-label="Warsaw"></li>
-      <li data-tz="Europe/Moscow" data-label="Moscow"></li>
-      <li data-tz="Asia/Kolkata" data-label="Mumbai"></li>
-      <li data-tz="Asia/Shanghai" data-label="Shanghai"></li>
-      <li data-tz="Asia/Tokyo" data-label="Tokyo"></li>
+      <li data-tz="America/Los_Angeles"><span class="city-label">Los Angeles</span></li>
+      <li data-tz="America/New_York"><span class="city-label">New York</span></li>
+      <li data-tz="Europe/London"><span class="city-label">London</span></li>
+      <li data-tz="Europe/Warsaw"><span class="city-label">Warsaw</span></li>
+      <li data-tz="Europe/Moscow"><span class="city-label">Moscow</span></li>
+      <li data-tz="Asia/Kolkata"><span class="city-label">Mumbai</span></li>
+      <li data-tz="Asia/Shanghai"><span class="city-label">Shanghai</span></li>
+      <li data-tz="Asia/Tokyo"><span class="city-label">Tokyo</span></li>
     </ul>
   </section>
 
@@ -97,10 +98,10 @@
 </main>
 
 <footer>
-  <span id="version">v1.0.6</span> · Design and code by
+  <span id="version">v1.0.7</span> · Design and code by
   <a href="mailto:hello@tomlebioda.com">Tom Lebioda</a>
 </footer>
 
-<script src="/assets/app.js?v=1.0.6"></script>
+<script src="/assets/app.js?v=1.0.7"></script>
 </body>
 </html>

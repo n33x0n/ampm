@@ -72,6 +72,7 @@ main {
 }
 
 .clock {
+  position: relative;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
@@ -79,6 +80,27 @@ main {
   justify-content: center;
   text-align: center;
   gap: 8px;
+}
+
+.cta-down {
+  position: absolute;
+  bottom: max(20px, env(safe-area-inset-bottom));
+  left: 0; right: 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  padding: 10px 16px;
+  animation: cta-bounce 2.4s ease-in-out infinite;
+}
+.cta-down:hover { color: var(--fg); }
+@keyframes cta-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cta-down { animation: none; }
 }
 
 .date {

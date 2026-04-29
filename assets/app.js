@@ -77,15 +77,20 @@
   const cityRows = [];
   cityList.querySelectorAll("li").forEach((li) => {
     const tz = li.dataset.tz;
-    const label = li.dataset.label;
+    const labelEl = li.querySelector(".city-label");
+    const label = labelEl ? labelEl.textContent : tz;
     const on = enabled.has(tz);
     li.dataset.on = on ? "true" : "false";
-    li.innerHTML = `
-      <span class="city-label">${label}</span>
-      <span class="city-time" aria-live="off"></span>
-      <button type="button" class="switch" role="switch" aria-checked="${on}" aria-label="${label}"></button>
-    `;
-    const sw = li.querySelector(".switch");
+    const timeSpan = document.createElement("span");
+    timeSpan.className = "city-time";
+    const sw = document.createElement("button");
+    sw.type = "button";
+    sw.className = "switch";
+    sw.setAttribute("role", "switch");
+    sw.setAttribute("aria-checked", on);
+    sw.setAttribute("aria-label", label);
+    li.appendChild(timeSpan);
+    li.appendChild(sw);
     sw.addEventListener("click", () => {
       const isOn = sw.getAttribute("aria-checked") === "true";
       const next = !isOn;
@@ -95,7 +100,7 @@
       localStorage.setItem(enabledKey, JSON.stringify([...enabled]));
       updateCities();
     });
-    cityRows.push({ li, tz, timeEl: li.querySelector(".city-time") });
+    cityRows.push({ li, tz, timeEl: timeSpan });
   });
 
   function updateCities() {
