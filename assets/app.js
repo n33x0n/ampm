@@ -21,7 +21,6 @@
     btn24.setAttribute("aria-selected", f === "24");
     suffixEl.style.visibility = f === "12" ? "visible" : "hidden";
     tick();
-    if (typeof updateCities === "function") updateCities();
   }
 
   function tick() {
@@ -48,7 +47,7 @@
   btn24.addEventListener("click", () => setFormat("24"));
   setFormat(format);
   tick();
-  setInterval(() => { tick(); updateCities(); }, 1000);
+  setInterval(() => { tick(); try { updateCities(); } catch (e) {} }, 1000);
 
   // ---------- World clock ----------
   const cityList = $("cities");
@@ -111,6 +110,8 @@
     });
   }
   updateCities();
+  btn12.addEventListener("click", updateCities);
+  btn24.addEventListener("click", updateCities);
 
   // ---------- Converter ----------
   const h12 = $("h12");
