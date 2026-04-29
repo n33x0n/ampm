@@ -21,6 +21,7 @@
     btn24.setAttribute("aria-selected", f === "24");
     suffixEl.style.visibility = f === "12" ? "visible" : "hidden";
     tick();
+    if (typeof updateCities === "function") updateCities();
   }
 
   function tick() {
@@ -47,7 +48,64 @@
   btn24.addEventListener("click", () => setFormat("24"));
   setFormat(format);
   tick();
-  setInterval(tick, 1000);
+  setInterval(() => { tick(); updateCities(); }, 1000);
+
+  // ---------- World clock ----------
+  const cityList = $("cities");
+  const enabledKey = "ampm.cities";
+  let enabled = new Set();
+  try {
+    const raw = localStorage.getItem(enabledKey);
+    if (raw) enabled = new Set(JSON.parse(raw));
+  } catch (e) {}
+
+  const tzFmtCache = new Map();
+  function tzFmt(tz) {
+    const key = tz + "|" + format;
+    if (tzFmtCache.has(key)) return tzFmtCache.get(key);
+    const f = new Intl.DateTimeFormat("en-US", {
+      timeZone: tz,
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: format === "12",
+    });
+    tzFmtCache.set(key, f);
+    return f;
+  }
+
+  const cityRows = [];
+  cityList.querySelectorAll("li").forEach((li) => {
+    const tz = li.dataset.tz;
+    const label = li.dataset.label;
+    const on = enabled.has(tz);
+    li.dataset.on = on ? "true" : "false";
+    li.innerHTML = `
+      <span class="city-label">${label}</span>
+      <span class="city-time" aria-live="off"></span>
+      <button type="button" class="switch" role="switch" aria-checked="${on}" aria-label="${label}"></button>
+    `;
+    const sw = li.querySelector(".switch");
+    sw.addEventListener("click", () => {
+      const isOn = sw.getAttribute("aria-checked") === "true";
+      const next = !isOn;
+      sw.setAttribute("aria-checked", next);
+      li.dataset.on = next ? "true" : "false";
+      if (next) enabled.add(tz); else enabled.delete(tz);
+      localStorage.setItem(enabledKey, JSON.stringify([...enabled]));
+      updateCities();
+    });
+    cityRows.push({ li, tz, timeEl: li.querySelector(".city-time") });
+  });
+
+  function updateCities() {
+    const d = new Date();
+    cityRows.forEach(({ li, tz, timeEl }) => {
+      if (li.dataset.on !== "true") return;
+      timeEl.textContent = tzFmt(tz).format(d);
+    });
+  }
+  updateCities();
 
   // ---------- Converter ----------
   const h12 = $("h12");

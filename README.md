@@ -39,6 +39,10 @@ python3 -m http.server 8000
 
 Every visible change bumps the version in the footer of both `index.html` and `pl/index.html`, gets a git tag `vX.Y.Z`, and a matching GitHub Release.
 
+## Support
+
+If this project saved you a moment of "wait, is it AM or PM?", you can buy me a coffee: https://buycoffee.to/tomaleb
+
 ## License
 
 [Apache License 2.0](./LICENSE)
